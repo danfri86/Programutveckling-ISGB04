@@ -1,6 +1,5 @@
 ## Programutveckling-ISGB04
-========================
-
+-------------------------------
 Du skall skriva ett program som slumpar fram en lottorad. En lottorad består av 7 unika siffror 
 från 1 till och med 35. 
  
