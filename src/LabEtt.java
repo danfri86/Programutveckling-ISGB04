@@ -50,10 +50,6 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 		f.setLocation(100,100);
 		f.setVisible(true);
 	}
-	
-	public void actionPerformed(ActionEvent e) {
-		
-	}
 
 	class Inner implements ActionListener { 
 		private LabEtt o; 
@@ -63,6 +59,15 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 			o.newMessage("Konstruktor klar");
 		}
 		public void actionPerformed(ActionEvent e) { 
+			JMenuItem grejj; 
+			grejj=(JMenuItem)e.getSource();
+			if(grejj.getText()=="Spara"){
+				
+			}
+			
+			
+			
+			
 			slump = new int[7];
 			Random number = new Random();
 			Lottorad="";
