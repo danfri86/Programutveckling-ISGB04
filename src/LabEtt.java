@@ -14,7 +14,7 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 	private JTextArea t; 
 	private JScrollPane sb;
 	
-	// Meny objekt
+	// Menyobjekt
 	private JMenuBar mainMenu; 
 	private JMenu meny; 
 	private JMenuItem ch1,ch2, ch3, ch4, ch5;
