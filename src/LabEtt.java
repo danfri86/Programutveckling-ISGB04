@@ -14,7 +14,7 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 	private JTextArea t; 
 	private JScrollPane sb;
 	
-	// Menyobjekt
+	// Meny objekt
 	private JMenuBar mainMenu; 
 	private JMenu meny; 
 	private JMenuItem ch1,ch2, ch3, ch4, ch5;
@@ -51,7 +51,7 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 		f.setVisible(true);
 	}
 
-	class Inner implements ActionListener { 
+	public class Inner implements ActionListener { 
 		private LabEtt o; 
 		public Inner(LabEtt oin) { 
 			o=oin; 
@@ -59,15 +59,6 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 			o.newMessage("Konstruktor klar");
 		}
 		public void actionPerformed(ActionEvent e) { 
-			JMenuItem grejj; 
-			grejj=(JMenuItem)e.getSource();
-			if(grejj.getText()=="Spara"){
-				
-			}
-			
-			
-			
-			
 			slump = new int[7];
 			Random number = new Random();
 			Lottorad="";
