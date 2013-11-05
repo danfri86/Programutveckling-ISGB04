@@ -36,7 +36,7 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 		ch3=new JMenuItem("Slumpa"); 
 		ch4=new JMenuItem("Rensa"); 
 		ch5=new JMenuItem("Avsluta"); 
-		ch2.addActionListener(this); 
+		ch3.addActionListener(this); 
 		meny.add(ch1);
 		meny.add(ch2); 
 		meny.add(ch3); 
@@ -50,15 +50,17 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 		f.setLocation(100,100);
 		f.setVisible(true);
 	}
-
-	public class Inner implements ActionListener { 
+	
+	class Inner implements ActionListener { 
 		private LabEtt o; 
+		
 		public Inner(LabEtt oin) { 
 			o=oin; 
 			o.newMessage("Nu associeras lyssnaren med händelsekällan"); 
 			o.newMessage("Konstruktor klar");
 		}
-		public void actionPerformed(ActionEvent e) { 
+		
+		public void actionPerformed(ActionEvent e) {
 			slump = new int[7];
 			Random number = new Random();
 			Lottorad="";
@@ -67,7 +69,12 @@ public class LabEtt extends WindowAdapter implements ActionListener {
 				slump[i] = number.nextInt(34)+1;
 				Lottorad=Lottorad+slump[i]+" ";
 			}
-			o.newMessage(Lottorad);
+			
+			JMenuItem grejj; 
+			grejj=(JMenuItem)e.getSource();
+			if(grejj.getText()=="Slumpa"){ 
+				o.newMessage(Lottorad);
+			}
 		} 
 	} 
 	public void newMessage(String s) { 
