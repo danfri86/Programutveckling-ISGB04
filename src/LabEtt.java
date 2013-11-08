@@ -87,13 +87,13 @@ public class LabEtt extends WindowAdapter {
 
 			grejj=(JMenuItem)e.getSource();
 			if(grejj.getText()=="Spara"){
-				//LabEtt b=new LabEtt("fil.txt");
-				//b.skriv();
+				LabEtt b=new LabEtt("fil.txt");
+				b.las();
+				b.skriv();
 
 				JFileChooser chooser = new
 						JFileChooser("d:"+File.separator+"Java-program"); 
-				int returnVal =
-						chooser.showSaveDialog(f);
+				int returnVal = chooser.showSaveDialog(f);
 				if(returnVal == JFileChooser.APPROVE_OPTION) {
 					sparaFil(chooser.getCurrentDirectory()
 							+File.separator+chooser.getSelectedFile
@@ -101,17 +101,9 @@ public class LabEtt extends WindowAdapter {
 				}
 			}
 
-
 			grejj=(JMenuItem)e.getSource();
 			if(grejj.getText()=="Slumpa"){
-				slump = new int[7];
-				Random number = new Random();
-				Lottorad="";
-
-				for(int i=0; i<=6; i++){			
-					slump[i] = number.nextInt(34)+1;
-					Lottorad=Lottorad+slump[i]+" ";
-				}
+				slumpa();
 				o.newMessage(Lottorad);
 			}
 
@@ -122,24 +114,36 @@ public class LabEtt extends WindowAdapter {
 
 			grejj=(JMenuItem)e.getSource();
 			if(grejj.getText()=="Avsluta"){
+				System.out.println("Hej då");
 				f.setVisible(false);
 				f.dispose();
 				System.exit(0);
 			}
 		} 
 	}
+	
+	private void slumpa(){
+		slump = new int[7];
+		Random number = new Random();
+		Lottorad="";
+
+		for(int i=0; i<=6; i++){			
+			slump[i] = number.nextInt(34)+1;
+			Lottorad=Lottorad+slump[i]+" ";
+		}
+	}
 
 	private void sparaFil(String text) { 
 		System.out.println(text);
 	}
-
+	
 	public void las() { 
 		try { 
 			las=new BufferedReader (new InputStreamReader 
 					(new BufferedInputStream 
 							(new FileInputStream(filnamn)))); 
-			System.out.println("Innehåll i filen: "); 
-			in=las.readLine(); 
+			//System.out.println("Innehåll i filen: "); 
+			in=Lottorad;
 			while (in!=null) { 
 				System.out.println(in); 
 				in=las.readLine(); 
@@ -158,23 +162,18 @@ public class LabEtt extends WindowAdapter {
 			//System.out.println("Ange den nya texten: "); 
 			in=inmat.readLine(); 
 			do { 
-				lagra.write(in+"\n"); 
-				in=inmat.readLine(); 
-			} while (!in.equals("slut")); 
+				lagra.write(in+"\n");
+				in=inmat.readLine();
+			} while (!in.equals("slut"));
 			lagra.close(); 
 		} 
-		catch (IOException e) { 
+		catch (IOException e) {
 			System.out.println("Går ej att skriva till filen"); 
 		} 
 	} 
 
 	public void newMessage(String s) { 
 		t.append(s+"\n");
-	}
-
-	public void windowClosing (WindowEvent e) { 
-		System.out.println("Hej då"); 
-		System.exit(1);
 	}
 
 	public static void main (String args[])throws IOException {
