@@ -1,11 +1,16 @@
 import java.awt.*;
 import javax.swing.*;
 
+import java.awt.event.*;
+import java.io.*; 
+
+import java.util.*;
+
 public class LabbTvaView {
 	private JFrame f;
 	private JTextArea t; 
 	private JScrollPane sb;
-	private LabbTvaControl ly;
+	private LabbTvaControl c;
 
 	// Menyobjekt
 	private JMenuBar mainMenu; 
@@ -14,8 +19,8 @@ public class LabbTvaView {
 
 	public LabbTvaView(){
 		f=new JFrame("Lab 2");
-		ly=new LabbTvaControl(this);
-		f.addWindowListener(ly);
+		c=new LabbTvaControl(this);
+		f.addWindowListener(c);
 		t=new JTextArea();
 		sb=new JScrollPane(t);
 		f.add(sb);
@@ -39,11 +44,11 @@ public class LabbTvaView {
 		f.setJMenuBar(mainMenu);
 		
 		// Lyssna på knapptryckningar
-		ch1.addActionListener(ly);
-		ch2.addActionListener(ly);
-		ch3.addActionListener(ly);
-		ch4.addActionListener(ly);
-		ch5.addActionListener(ly);
+		ch1.addActionListener(c);
+		ch2.addActionListener(c);
+		ch3.addActionListener(c);
+		ch4.addActionListener(c);
+		ch5.addActionListener(c);
 
 		f.setLocation(200,100);
 		f.setSize(200,300);
@@ -52,6 +57,45 @@ public class LabbTvaView {
 
 	public void skrivNyRad(String s){
 		t.append(s+"\n");
+	}
+	
+	public String oppna(){
+		System.out.println("View>Oppna anropad. Öppna fönster");
+		
+		String fil="";
+
+		JFileChooser chooser = new
+				JFileChooser("d:"+File.separator+"Java-program");
+		int returnVal = chooser.showOpenDialog(f);
+		if(returnVal == JFileChooser.APPROVE_OPTION) {
+			fil=(chooser.getCurrentDirectory()
+					+File.separator+chooser.getSelectedFile
+					().getName());
+		}
+		
+		return fil;
+	}
+	
+	public String skriv(){ 
+		System.out.println("View>Skriv anropad. Öppna fönster");
+				
+		String filnamn="";
+
+		JFileChooser chooser = new
+				JFileChooser("d:"+File.separator+"Java-program");
+		int returnVal = chooser.showSaveDialog(f);
+		if(returnVal == JFileChooser.APPROVE_OPTION) {
+			filnamn=(chooser.getCurrentDirectory()
+					+File.separator+chooser.getSelectedFile
+					().getName());
+		}
+		
+		return filnamn;
+	}
+	
+	public JTextArea getTextArea(){
+		JTextArea textArea=t;
+		return textArea;
 	}
 	
 	public void rensaText(){

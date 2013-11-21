@@ -4,9 +4,11 @@ import java.util.Random;
 import javax.swing.JFileChooser;
 
 public class LabbTvaModell {
-
+	
 	private int slump[];
 	private String Lottorad;
+	private String text;
+	
 	public String getRad(){
 		slump = new int[7];
 		Random number = new Random();
@@ -17,10 +19,5 @@ public class LabbTvaModell {
 			Lottorad=Lottorad+slump[i]+" ";
 		}
 		return Lottorad;
-	}
-
-	public static void main(String[] args) {
-		LabbTvaModell m=new LabbTvaModell();
-		System.out.println(m.getRad());
 	}
 }
