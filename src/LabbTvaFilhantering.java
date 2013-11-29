@@ -1,8 +1,4 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 
 public class LabbTvaFilhantering {
@@ -13,43 +9,40 @@ public class LabbTvaFilhantering {
 	
 	private LabbTvaFilhantering(){}
 	
-	public void oppna(String filnamnIn) {
+	public String oppna(String filnamnIn) {
+		String textFieldReadable="";
 		try {
-			FileReader fileReader = new FileReader(filnamnIn);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			
+			BufferedReader las=new BufferedReader (new InputStreamReader 
+			(new BufferedInputStream 
+			(new FileInputStream(filnamnIn)))); 
 
-			String inputFile="";
-			String textFieldReadable=bufferedReader.readLine();
+			 textFieldReadable=las.readLine();
 
-			while(textFieldReadable != null){
-				inputFile += textFieldReadable;
-				textFieldReadable = bufferedReader.readLine();
+			if(las != null){
+				textFieldReadable = textFieldReadable+las.readLine();
 			}
-			c.setTextArea().setText(inputFile);
-			System.out.println(inputFile);
-
-			//Behövs kanske inte men ser bra ut
-			bufferedReader.close();
+			
+			//Behovs kanske inte men ser bra ut
+			las.close();
+			
 		}
 		catch (IOException e) {
-			System.out.println("Filen är slut!!");
+			System.out.println("Filen ar slut!!");
 		}
+		return textFieldReadable;
 	}
 
-	public void skriv(String filnamn) {
+	public void skriv(String filnamn,String rader) {
 		try{
 			// Create file
-			FileWriter fstream = new FileWriter(filnamn);
-			BufferedWriter out = new BufferedWriter(fstream);
-
-			//Detta sparar bara den sista slumpade lottoraden
-			out.write(c.lottoRad());
-
-			//Detta sparar allt innehåll i textarean
-			//out.write(t.getText());
-
+			BufferedWriter fstream=new BufferedWriter(new OutputStreamWriter (new BufferedOutputStream 
+			(new FileOutputStream(filnamn))));
+			
+			fstream.write(rader);
+			
 			//Close the output stream
-			out.close();
+			fstream.close();
 		}catch (Exception e){//Catch exception if any
 			System.err.println("Error: " + e.getMessage());
 		}

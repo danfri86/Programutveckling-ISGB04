@@ -19,11 +19,12 @@ public class LabbTvaControl extends WindowAdapter implements ActionListener{
 		JMenuItem grejj;
 		
 		grejj=(JMenuItem)e.getSource();
-		if(grejj.getText()=="Öppna"){
+		if(grejj.getText()=="Oppna"){
 			String o = l.oppna();
 			
 			LabbTvaFilhantering instanceOppna = LabbTvaFilhantering.getInstance();
-			instanceOppna.oppna(o); 
+			String resultat=instanceOppna.oppna(o);
+			l.setTextArea(resultat);
 		}
 
 		grejj=(JMenuItem)e.getSource();
@@ -31,7 +32,8 @@ public class LabbTvaControl extends WindowAdapter implements ActionListener{
 			String b = l.skriv();
 			
 			LabbTvaFilhantering instanceSpara = LabbTvaFilhantering.getInstance();
-			instanceSpara.skriv(b);
+			String rader=l.getTextArea();
+			instanceSpara.skriv(b,rader);
 		}
 		
 		grejj=(JMenuItem)e.getSource();
@@ -46,7 +48,7 @@ public class LabbTvaControl extends WindowAdapter implements ActionListener{
 
 		grejj=(JMenuItem)e.getSource();
 		if(grejj.getText()=="Avsluta"){
-			System.out.println("Hej då");
+			System.out.println("Hej da");
 			System.exit(0);
 		}
 	}
@@ -54,11 +56,6 @@ public class LabbTvaControl extends WindowAdapter implements ActionListener{
 	public String lottoRad(){
 		String rad=ll.getRad();
 		return rad;
-	}
-	
-	public JTextArea setTextArea(){
-		JTextArea t=l.getTextArea();
-		return t;
 	}
 	
 	public void windowClosing (WindowEvent e){

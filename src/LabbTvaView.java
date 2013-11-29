@@ -27,13 +27,13 @@ public class LabbTvaView {
 
 		mainMenu=new JMenuBar(); 
 		meny=new JMenu("Meny"); 
-		ch1=new JMenuItem("Öppna"); 
+		ch1=new JMenuItem("Oppna"); 
 		ch2=new JMenuItem("Spara"); 
 		ch3=new JMenuItem("Slumpa"); 
 		ch4=new JMenuItem("Rensa"); 
 		ch5=new JMenuItem("Avsluta");
 
-		// Lägg till meny-items
+		// Lagg till meny-items
 		meny.add(ch1);
 		meny.add(ch2); 
 		meny.add(ch3); 
@@ -43,7 +43,7 @@ public class LabbTvaView {
 		mainMenu.add(meny); 
 		f.setJMenuBar(mainMenu);
 		
-		// Lyssna på knapptryckningar
+		// Lyssna pa knapptryckningar
 		ch1.addActionListener(c);
 		ch2.addActionListener(c);
 		ch3.addActionListener(c);
@@ -60,7 +60,7 @@ public class LabbTvaView {
 	}
 	
 	public String oppna(){
-		System.out.println("View>Oppna anropad. Öppna fönster");
+		System.out.println("View>Oppna anropad. Oppna fonster");
 		
 		String fil="";
 
@@ -77,7 +77,7 @@ public class LabbTvaView {
 	}
 	
 	public String skriv(){ 
-		System.out.println("View>Skriv anropad. Öppna fönster");
+		System.out.println("View>Skriv anropad. Oppna fonster");
 				
 		String filnamn="";
 
@@ -89,13 +89,17 @@ public class LabbTvaView {
 					+File.separator+chooser.getSelectedFile
 					().getName());
 		}
-		
+		System.out.println(filnamn);
 		return filnamn;
 	}
 	
-	public JTextArea getTextArea(){
-		JTextArea textArea=t;
-		return textArea;
+	public String getTextArea(){
+		return t.getText();
+	}
+	
+	public void setTextArea(String text){
+		System.out.println(text);
+		t.setText(text);
 	}
 	
 	public void rensaText(){
